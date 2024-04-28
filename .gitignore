@@ -1,6 +1,7 @@
 .vscode
 __pycache__
 .DS_store
+.idea/
 local*
 data/judgment
 data/model_answer
