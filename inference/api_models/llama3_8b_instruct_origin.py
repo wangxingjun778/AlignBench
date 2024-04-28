@@ -20,8 +20,10 @@ class llama3_8b_instruct_origin(api_model):
         question = sample["question"]
 
         res_d: dict = self.model_adapter.predict(question,
-                                                 infer_cfg={'max_new_tokens': 128,
-                                                            'temperature': 0.95,
+                                                 infer_cfg={
+                                                     'do_sample': True,
+                                                     'max_new_tokens': 128,
+                                                     'temperature': 0.95,
                                                             }
                                                  )
 
