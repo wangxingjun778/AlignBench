@@ -20,7 +20,7 @@ class llama3_8b_instruct_origin(api_model):
         question = sample["question"]
 
         res_d: dict = self.model_adapter.predict(question,
-                                                 infer_cfg={'max_length': 1024, 'max_new_tokens': 1024}
+                                                 infer_cfg={'max_length': 256, 'max_new_tokens': 256}
                                                  )
 
         ans: str = res_d['choices'][0]['message']['content']
