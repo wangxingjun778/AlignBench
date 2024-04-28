@@ -153,6 +153,45 @@ def get_GPT_4_judgment(config, messages):
     return output
 
 
+@retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))
+def get_GLM_4_judgment(config, messages):
+    from zhipuai import ZhipuAI
+
+    def single_turn_wrapper(text):
+        return [{"role": "user", "content": text}]
+
+    # url = config.openai_api_url
+    key = config.openai_api_key   # TODO: use openai config for now
+
+    if isinstance(messages, str):
+        messages = single_turn_wrapper(messages)
+
+    client = ZhipuAI(api_key=key)  # 填写您自己的APIKey
+    response = client.chat.completions.create(
+        model="glm-4",  # 填写需要调用的模型名称
+        messages=messages,
+    )
+    output: str = response.choices[0].message.content
+    return output
+
+
+    # payload = json.dumps({
+    #     "model": "gpt-4",
+    #     "messages": messages,
+    #     "temperature": 0,
+    # })
+    # headers = {
+    #     'Content-Type': 'application/json',
+    #     'Authorization': f'Bearer {key}'
+    # }
+    #
+    # response = requests.request("POST", url, headers=headers, data=payload)
+    # print(response.text)
+    # output = json.loads(response.text).get("choices")[0].get("message").get("content")
+    # return output
+
+
+
 def run_sample(doc: json, config: Config) -> Judge:
     ques = doc['question']
     ref = doc['reference']
