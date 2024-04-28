@@ -4,13 +4,13 @@ from inference.models import api_model
 from llmuses.models.model_adapter import ChatGenerationModelAdapter
 
 
-class llama3_8b_instruct_origin(api_model):
+class llama3_chinese_sft_v3(api_model):
     def __init__(self, workers=10):
         self.temperature = 0.95
         self.max_tokens = 1024
         self.workers = workers
 
-        self.model_adapter = ChatGenerationModelAdapter(model_id='LLM-Research/Meta-Llama-3-8B-Instruct',
+        self.model_adapter = ChatGenerationModelAdapter(model_id='zhuangxialie/Llama3_Chinese_Sft',
                                                         model_revision='master',
                                                         template_type='llama3')
 
