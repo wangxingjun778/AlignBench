@@ -204,7 +204,8 @@ def run_sample(doc: json, config: Config) -> Judge:
 
     dimensions, prompt = prompt_construct(sample, config)
     
-    judgment = get_GPT_4_judgment(config, prompt)
+    # judgment = get_GPT_4_judgment(config, prompt)
+    judgment = get_GLM_4_judgment(config, prompt)   # TODO: USE GLM4
 
     rating, score = post_process(judgment)
 
