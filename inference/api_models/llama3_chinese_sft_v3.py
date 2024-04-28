@@ -22,8 +22,8 @@ class llama3_chinese_sft_v3(api_model):
         res_d: dict = self.model_adapter.predict(question,
                                                  infer_cfg={
                                                      'do_sample': True,
-                                                     'max_new_tokens': 128,
-                                                     'temperature': 0.95,
+                                                     'max_new_tokens': 256,
+                                                     'temperature': 0.75,
                                                  }
                                                  )
         ans: str = res_d['choices'][0]['message']['content']
