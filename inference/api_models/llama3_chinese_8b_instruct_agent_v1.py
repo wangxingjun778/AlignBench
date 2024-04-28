@@ -12,7 +12,7 @@ class llama3_chinese_8b_instruct_agent_v1(api_model):
         self.max_tokens = 1024
         self.workers = workers
 
-        self.model_adapter = ChatGenerationModelAdapter(model_id='Llama3-Chinese-8B-Instruct-Agent-v1',
+        self.model_adapter = ChatGenerationModelAdapter(model_id='swift/Llama3-Chinese-8B-Instruct-Agent-v1',
                                                         model_revision='master',
                                                         template_type='llama3')
 
