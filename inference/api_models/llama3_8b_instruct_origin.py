@@ -4,7 +4,7 @@ from inference.models import api_model
 from llmuses.models.model_adapter import ChatGenerationModelAdapter
 
 
-class Llama3_8B_Instruct_Origin(api_model):
+class llama3_8b_instruct_origin(api_model):
     def __init__(self, workers=10):
         self.temperature = 0.95
         self.max_tokens = 1024
